@@ -165,32 +165,45 @@
 			<thead>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
 					<th style="text-align: left; width:16%;">배송 정보</th>
-					<th style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""> 필수입력사항</th>
+					<th style="text-align: right;">
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""> 필수입력사항
+					</th>
 				</tr>
 			</thead>
 			<tbody style="text-align: left;">
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
-					<td style="padding:1%;">배송지 선택 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
+					<td style="padding:1%;">배송지 선택 
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt="">
+					</td>
 					<td style="padding:1%;">
 						<a id="recSelect" href="#forAddAddress" rel="modal:open">주소록 보기</a>
 					</td>
 				</tr>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
-					<td style="padding:1%;">받으시는 분 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
+					<td style="padding:1%;">받으시는 분 
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt="">
+					</td>
 					<td style="padding:1%;">
 						<input type="text" id="recPeople" value='<c:out value="${recentAddr.recipient}"></c:out>' readonly="readonly">
 					</td>
 				</tr>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
-					<td style="padding:1%;">주소 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
+					<td style="padding:1%;">주소 
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt="">
+					</td>
 					<td style="padding:1%;">
-						<input type="text" style="width:8%;" id="recZipcode" value='<c:out value="${recentAddr.zipCode}"></c:out>' readonly="readonly">
-						<br><input style="margin-top:0.5%;" type="text" id="recBasic" value='<c:out value="${recentAddr.basicAddr}"></c:out>' readonly="readonly"> 기본주소
-						<br><input style="margin-top:0.5%;" type="text" id="recDetail" value='<c:out value="${recentAddr.detailAddr}"></c:out>' readonly="readonly"> 나머지주소
+						<input type="text" style="width:8%;" id="recZipcode" 
+								value='<c:out value="${recentAddr.zipCode}"></c:out>' readonly="readonly">
+						<br><input style="margin-top:0.5%;" type="text" id="recBasic" 
+								value='<c:out value="${recentAddr.basicAddr}"></c:out>' readonly="readonly"> 기본주소
+						<br><input style="margin-top:0.5%;" type="text" id="recDetail" 
+								value='<c:out value="${recentAddr.detailAddr}"></c:out>' readonly="readonly"> 나머지주소
 					</td>
 				</tr>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
-					<td style="padding:1%;">전화번호 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
+					<td style="padding:1%;">전화번호 
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt="">
+					</td>
 					<td style="padding:1%;">
 						<input type="text" id="reccall1" value='<c:out value="${recentAddr.addrPhone1}"></c:out>' readonly="readonly"> 
 						- <input type="text" id="reccall2" value='<c:out value="${recentAddr.addrPhone2}"></c:out>' readonly="readonly"> 
@@ -221,7 +234,9 @@
 				<tr style="border-bottom: 2px rgba(128,128,128,0.5) solid; font-size:1.6rem;">
 					<td style="padding: 3%;"><strong>KRW <span><c:out value="${totalprice}"></c:out></span></strong></td>
 					<td style="padding: 3%;"><strong>- KRW <span id="onsaleprice"><c:out value='0'></c:out></span></strong></td>
-					<td style="padding: 3%;"><strong>= KRW <span id="endprice"><c:out value="${totalprice}"></c:out></span></strong></td>
+					<td style="padding: 3%;">
+						<strong>= KRW <span id="endprice"><c:out value="${totalprice}"></c:out></span></strong>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -248,7 +263,8 @@
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
 					<td style="width:16%; text-align: left; padding:1%;">적립금</td>
 					<td style="text-align: left; padding:1%;">
-						<input type="text" id="useMile" value="0"> 원 (총 사용가능 적립금: <span><c:out value="${orderDetail.mileageVO.enabledMile}"></c:out></span>원)
+						<input type="text" id="useMile" value="0"> 원 (총 사용가능 적립금: 
+							<span><c:out value="${orderDetail.mileageVO.enabledMile}"></c:out></span>원)
 						<br><button style="margin-top:0.5%;" id="mileAccept">적용</button>
 						<p>
 							<br>- 적립금은 최소 1000이상일 때 결제가 가능합니다.
@@ -296,7 +312,8 @@
 		</div>
 	</div>
 	
-	<div style="display:none; position: fixed; top:10%; left:15%; max-width:70%; max-height: 75%; overflow-y: auto;" id="forAddAddress" class="modal">
+	<div style="display:none; position: fixed; top:10%; left:15%; max-width:70%; max-height: 75%; overflow-y: auto;" 
+			id="forAddAddress" class="modal">
 		<div id="addressChapter1" style="margin:2%; width:96%; display:contents;">
 			<table style="border: 1px rgba(128,128,128,0.5) solid; width: 100%;">
 				<thead style="border-bottom: 1px rgba(128,128,128,0.25) solid;">
@@ -436,8 +453,11 @@
 							<input type="text" id="sample2_detailAddress" style="width:65%" placeholder="상세주소">
 							
 							<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-							<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-							<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+							<div id="layer" 
+								style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+							<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" 
+								style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" 
+									onclick="closeDaumPostcode()" alt="닫기 버튼">
 							</div>
 						</td>
 					</tr>
