@@ -1,9 +1,7 @@
 var chart1;
 var chart2;
 $(document).ready(function(){
-	
 	google.charts.load("current", {packages:["corechart", "bar"]});
-	
 	let array1 = new Array();
 	const hm = new Map();
 	
@@ -34,26 +32,7 @@ $(document).ready(function(){
 			let arr = Array.from(hm);
 			let array2 = new Array();
 			for(let data of array1){
-				const r = Math.floor(Math.random()*256).toString(16);
-				const g = Math.floor(Math.random()*256).toString(16);
-				const b = Math.floor(Math.random()*256).toString(16);
-				let rgb = "color:#";
-				if(r.length==1){
-					rgb+="0"+r;
-				}else{
-					rgb+=r;
-				}
-				if(g.length==1){
-					rgb+="0"+g;
-				}else{
-					rgb+=g;
-				}
-				if(b.length==1){
-					rgb+="0"+b;
-				}else{
-					rgb+=b;
-				}
-				data.push(rgb);
+				data.push(randomRGB());
 				array2.push(data);
 			}
 			
@@ -68,9 +47,7 @@ $(document).ready(function(){
 
 $("#ajaxDate").click(function(event){
 	event.preventDefault();
-	
 	let selectedDate = $("#getDate").val();
-	
 	let array1 = new Array();
 	const hm = new Map();
 	
@@ -101,27 +78,7 @@ $("#ajaxDate").click(function(event){
 			let arr = Array.from(hm);
 			let array2 = new Array();
 			for(let data of array1){
-				const r = Math.floor(Math.random()*256).toString(16);
-				const g = Math.floor(Math.random()*256).toString(16);
-				const b = Math.floor(Math.random()*256).toString(16);
-				let rgb = "color:#";
-				if(r.length==1){
-					rgb+="0"+r;
-				}else{
-					rgb+=r;
-				}
-				if(g.length==1){
-					rgb+="0"+g;
-				}else{
-					rgb+=g;
-				}
-				if(b.length==1){
-					rgb+="0"+b;
-				}else{
-					rgb+=b;
-				}
-				rgb+=";";
-				data.push(rgb);
+				data.push(randomRGB());
 				array2.push(data);
 			}
 			
@@ -177,4 +134,28 @@ function drawChart2(data2){
 	}
 	chart1 = new google.visualization.ColumnChart(document.getElementById('chart1'));
 	chart1.draw(view,options);
+}
+
+function randomRGB(){
+	const r = Math.floor(Math.random()*256).toString(16);
+	const g = Math.floor(Math.random()*256).toString(16);
+	const b = Math.floor(Math.random()*256).toString(16);
+	let rgb = "color:#";
+	if(r.length==1){
+		rgb+="0"+r;
+	}else{
+		rgb+=r;
+	}
+	if(g.length==1){
+		rgb+="0"+g;
+	}else{
+		rgb+=g;
+	}
+	if(b.length==1){
+		rgb+="0"+b;
+	}else{
+		rgb+=b;
+	}
+	rgb+=";";
+	return rgb;
 }

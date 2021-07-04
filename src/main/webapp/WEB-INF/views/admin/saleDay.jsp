@@ -15,7 +15,8 @@
 <div style="padding:5% 10%; text-align: center; overflow: auto;">
 	<h1>일간 판매 개수 현황</h1>
 	<div style="margin-top:5%; text-align: left;">
-		<input type="date" id="getDate" value="<c:out value='${lastDay}'></c:out>" min="2021-06-01" max='<c:out value="${lastDay}"></c:out>'/>
+		<input type="date" id="getDate" value="<c:out value='${lastDay}'></c:out>" min="2021-06-01" 
+																			max='<c:out value="${lastDay}"></c:out>'/>
 		<button id="ajaxDate">날짜 선택</button>
 	</div>
 	<div id="chart1" style="height:70%; width:100%; display: inline-block;"></div>
