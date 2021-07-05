@@ -62,11 +62,6 @@
   	select i.stock from productInfo i where i.pInfoNum = #{pInfoNum}
   </select>
   
-  <insert id="setCart" parameterType="CartVO">
-  	insert into cart(productNum, pInfoNum, productCount, username) 
-  	values(#{productNum}, #{pInfoNum}, #{productCount}, #{username})
-  </insert>
-  
   <insert id="setCartList" parameterType="java.util.List">
   	insert into cart(productNum, pInfoNum, productCount, username) values
   	<foreach collection="list" item="item" separator=",">

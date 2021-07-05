@@ -29,10 +29,6 @@ public class CartService {
 		return cartMapper.getStock(cartVO);
 	}
 	
-	public Long setCart(CartVO cartVO)throws Exception{
-		return cartMapper.setCart(cartVO);
-	}
-	
 	public Long setCartList(List<CartVO> list)throws Exception{
 		return cartMapper.setCartList(list);
 	}

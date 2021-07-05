@@ -63,12 +63,6 @@ public class CartController {
 		return cartService.updateCount(cartVO);
 	}
 	
-	@GetMapping("setCart")
-	public Long setCart(CartVO cartVO, Authentication authentication)throws Exception{
-		cartVO.setUsername(((UserDetails)authentication.getPrincipal()).getUsername());
-		return cartService.setCart(cartVO);
-	}
-	
 	@PostMapping("setCartList")
 	public Long setCartList(Long productNum, Long[] productCounts, Long[] pInfoNums ,Authentication authentication)throws Exception{
 		int size = productCounts.length;
