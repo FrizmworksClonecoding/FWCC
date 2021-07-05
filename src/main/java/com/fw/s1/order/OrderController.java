@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +73,8 @@ public class OrderController {
 	private IamportClient api;
 	
 	public OrderController() {
-		this.api = new IamportClient("3281578796108293", "mgb5mvWKIMTfvM2vocwfrtBGafLXV9pipAnM6jwO6q4Cc77BjERL7srhHdfCmFUMgizmC6bJwflJntkH");
+		this.api = new IamportClient("3281578796108293", 
+											"mgb5mvWKIMTfvM2vocwfrtBGafLXV9pipAnM6jwO6q4Cc77BjERL7srhHdfCmFUMgizmC6bJwflJntkH");
 	}
 	
 	//결제를 위한 메서드, 결제 검증을 위해 필요하다.
@@ -127,6 +126,7 @@ public class OrderController {
 			} catch (Exception e) {
 				check = false;
 				e.printStackTrace();
+				return false;
 			}
 			
 			if(orderlistVO == null) {
@@ -169,6 +169,7 @@ public class OrderController {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 		}
 		
@@ -185,8 +186,8 @@ public class OrderController {
 		List<CartVO> updatelist = new ArrayList<>();
 		List<CartVO> list = new ArrayList<>();
 		long cartCount = getlist.size();
-		
 		long totalprice = 0;
+		
 		for(CartVO cartVO : getlist) {
 			ProductVO productVO = cartVO.getProductVO();
 			ProductInfoVO productInfoVO = cartVO.getProductInfoVO();
@@ -238,7 +239,8 @@ public class OrderController {
 	
 	//주소 추가작업 필요
 	@PostMapping("orderform")
-	public String getPurchase(long[] cartNums, Authentication authentication, Model model, RedirectAttributes redirectAttributes)throws Exception {
+	public String getPurchase(long[] cartNums, Authentication authentication, Model model, 
+																		RedirectAttributes redirectAttributes)throws Exception {
 		String msg = "";
 		List<CartVO> clist = new ArrayList<>();
 		List<CartVO> list = new ArrayList<>();
@@ -485,7 +487,8 @@ public class OrderController {
 	}
 	
 	@GetMapping("orderResult")
-	public String orderResult(OrderlistVO orderlistVO, Authentication authentication, Model model, RedirectAttributes redirectAttributes)throws Exception{
+	public String orderResult(OrderlistVO orderlistVO, Authentication authentication, Model model, 
+																			RedirectAttributes redirectAttributes)throws Exception{
 		orderlistVO.setUsername(((UserDetails)authentication.getPrincipal()).getUsername());
 		orderlistVO = orderService.getOrder(orderlistVO);
 		
