@@ -1,62 +1,31 @@
 var chart1;
 var chart2;
+
 $(document).ready(function(){
 	google.charts.load("current", {packages:["corechart", "bar"]});
-	let array1 = new Array();
-	const hm = new Map();
+	let selectedDate = "";
 	
-	$.get({
-		url:"./getSaleDay",
-		data:{
-			date:""
-		},
-		success:function(datas){
-			for(let data of datas){
-				let obj = JSON.parse(data);
-				let productTitle = obj.productVO.productTitle;
-				let sellCount = obj.sellCount;
-				let temp1 = new Array();
-				temp1.push(productTitle);
-				temp1.push(sellCount);
-				array1.push(temp1);
-				
-				let temp2 = obj.productVO.productDivisionVO.collab+" "+obj.productVO.productDivisionVO.productType;
-				
-				if(hm.has(temp2)){
-					let tempdata = hm.get(temp2);
-					hm.set(temp2, tempdata + obj.sellCount);
-				}else{
-					hm.set(temp2, obj.sellCount);
-				}
-			}
-			let arr = Array.from(hm);
-			let array2 = new Array();
-			for(let data of array1){
-				data.push(randomRGB());
-				array2.push(data);
-			}
-			
-			google.charts.setOnLoadCallback(
-				function(){
-					drawChart1(arr);
-					drawChart2(array2);
-			});
-		}
-	});
+	getData(selectedDate);
 });
 
 $("#ajaxDate").click(function(event){
 	event.preventDefault();
 	let selectedDate = $("#getDate").val();
-	let array1 = new Array();
-	const hm = new Map();
 	
+	chart1.clearChart();
+	chart2.clearChart();
+	getData(selectedDate);
+});
+
+function getData(selectedDate){
 	$.get({
 		url:"./getSaleDay",
 		data:{
 			date:selectedDate
 		},
 		success:function(datas){
+			let array1 = new Array();
+			const hm = new Map();
 			for(let data of datas){
 				let obj = JSON.parse(data);
 				let productTitle = obj.productVO.productTitle;
@@ -84,14 +53,12 @@ $("#ajaxDate").click(function(event){
 			
 			google.charts.setOnLoadCallback(
 				function(){
-					chart1.clearChart();
-					chart2.clearChart();
 					drawChart1(arr);
 					drawChart2(array2);
 			});
 		}
 	});
-});
+}
 
 function drawChart1(data1){
 	let data = new google.visualization.DataTable();

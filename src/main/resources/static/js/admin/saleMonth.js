@@ -19,6 +19,10 @@ $("#ajaxMonth").click(function(event){
 
 function getData(){
 	const date = $("#getMonth").val();
+	let array1 = new Array();
+	const arr2 = new Map();
+	const hm = new Map();
+	const productMap = new Map();
 	
 	$.get({
 		url:"./getSaleMonth",
@@ -26,11 +30,6 @@ function getData(){
 			date:date
 		},
 		success:function(result){
-			let array1 = new Array();
-			const arr2 = new Map();
-			const hm = new Map();
-			const productMap = new Map();
-			
 			let checkdate = new Date(date);
 			const checkmonth = checkdate.getMonth();
 			while(checkdate.getMonth()==checkmonth){
@@ -61,7 +60,6 @@ function getData(){
 			}
 			
 			let arr1 = Array.from(productMap);
-			
 			arr1.forEach(function(value) {
 				value.push(randomRGB());
 			});

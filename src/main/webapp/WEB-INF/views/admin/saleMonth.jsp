@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html style="height:100%; overflow:auto;">
@@ -15,7 +14,8 @@
 <div style="padding:5% 10%; text-align:center; overflow: auto;">
 	<h1>월간 판매 현황</h1>
 	<div style="text-align: left; margin-top:5%;">
-		<input type="month" id="getMonth" value="<c:out value='${lastMonth}'></c:out>" min="2021-06" max='<c:out value="${lastMonth}"></c:out>'/>
+		<input type="month" id="getMonth" value="<c:out value='${lastMonth}'></c:out>" min="2021-06" 
+																						max='<c:out value="${lastMonth}"></c:out>'/>
 		<button id="ajaxMonth">월 선택</button>
 	</div>
 	<div id="chart1" style="height:70%; width:100%; display: inline-block;"></div>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html style="height:100%; overflow:auto;">
@@ -15,7 +14,8 @@
 <div style="padding:5% 10%; text-align:center; overflow: auto;">
 	<h1>주간 판매 현황</h1>
 	<div style="text-align: left; margin-top: 5%;">
-		<input type="date" id="getDate" value="<c:out value='${lastDay}'></c:out>" min="2021-06-01" max='<c:out value="${lastDay}"></c:out>'/>
+		<input type="date" id="getDate" value="<c:out value='${lastDay}'></c:out>" min="2021-06-01" 
+																					max='<c:out value="${lastDay}"></c:out>'/>
 		<button id="ajaxDate">날짜 선택</button>
 		<br><span>(목표 주의 마지막 일을 선택)</span>
 	</div>
