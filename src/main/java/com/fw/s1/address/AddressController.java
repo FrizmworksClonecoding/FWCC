@@ -1,8 +1,9 @@
 package com.fw.s1.address;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,19 +11,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fw.s1.member.MemberVO;
 import com.google.gson.Gson;
 
-@Controller
+@RestController
 @RequestMapping("/address/**")
 public class AddressController {
 
 	@Autowired
 	private AddressService addressService;
 	
-	@ResponseBody
 	@GetMapping("getSelectOne")
 	public String getSelectOne(AddressVO addressVO, Authentication authentication)throws Exception{
 		addressVO.setUsername(((UserDetails)authentication.getPrincipal()).getUsername());
@@ -40,7 +39,6 @@ public class AddressController {
 		return gson.toJson(addressVO);
 	}
 	
-	@ResponseBody
 	@GetMapping("deleteSelect")
 	@Transactional(rollbackFor = Exception.class)
 	public String deleteAddress(long[] addrNums, Authentication authentication)throws Exception{
@@ -75,7 +73,6 @@ public class AddressController {
 		return "";
 	}
 	
-	@ResponseBody
 	@GetMapping("getAddressList")
 	public String[] getAddressList(Authentication authentication)throws Exception{
 		MemberVO memberVO = new MemberVO();
@@ -105,7 +102,6 @@ public class AddressController {
 		return results;
 	}
 	
-	@ResponseBody
 	@GetMapping("updateAddress")
 	@Transactional(rollbackFor = Exception.class)
 	public Long updateAddress(AddressVO addressVO, Authentication authentication)throws Exception{
@@ -120,7 +116,6 @@ public class AddressController {
 		return result;
 	}
 	
-	@ResponseBody
 	@GetMapping("setAddress")
 	@Transactional(rollbackFor = Exception.class)
 	public Long setAddress(AddressVO addressVO, Authentication authentication)throws Exception{
@@ -130,7 +125,6 @@ public class AddressController {
 		return addressService.setAddress(addressVO);
 	}
 	
-	@ResponseBody
 	@GetMapping("getSelectRecent")
 	public String getSelectRecent(Authentication authentication)throws Exception{
 		AddressVO addressVO = new AddressVO();
@@ -147,7 +141,6 @@ public class AddressController {
 		return gson.toJson(addressVO);
 	}
 	
-	@ResponseBody
 	@GetMapping("checkCount")
 	public Long checkCount(Authentication authentication)throws Exception{
 		AddressVO addressVO = new AddressVO();
