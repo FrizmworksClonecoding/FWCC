@@ -63,6 +63,38 @@ public class AdminController {
 	public void orderlistUpdate()throws Exception{	}
 	
 	@ResponseBody
+	@GetMapping("orderStateChange")
+	public String[] orderStateChange(OrderlistVO orderlistVO)throws Exception{
+		List<OrderlistVO> list = orderService.orderStateChange(orderlistVO);
+		Gson gson = new Gson();
+		int size = list.size();
+		String[] result = new String[size];
+		for(int i = 0 ; i < size; i++) {
+			result[i]=gson.toJson(list.get(i));
+		}
+		return result;
+	}
+	
+	@ResponseBody
+	@PostMapping("orderlistsUpdate")
+	public Long orderlistsUpdate(String[] orderNums)throws Exception{
+		List<OrderlistVO> list = new ArrayList<OrderlistVO>();
+		for(String temp : orderNums) {
+			OrderlistVO orderlistVO = new OrderlistVO();
+			orderlistVO.setOrderNum(temp);
+			list.add(orderlistVO);
+		}
+		return orderService.orderlistsUpdate(list);
+	}
+	
+	@ResponseBody
+	@GetMapping("selectedOrder")
+	public String selectedOrder(OrderlistVO orderlistVO)throws Exception{
+		Gson gson = new Gson();
+		return gson.toJson(orderService.selectedOrder(orderlistVO));
+	}
+	
+	@ResponseBody
 	@PostMapping("orderlistUpdate")
 	@Transactional(rollbackFor = Exception.class)
 	public Long orderlistUpdate(OrderlistVO orderlistVO)throws Exception{
@@ -87,38 +119,6 @@ public class AdminController {
 		}
 		orderlistVO.setOrderState(temp);
 		return orderService.orderlistUpdate(orderlistVO);
-	}
-	
-	@ResponseBody
-	@PostMapping("orderlistsUpdate")
-	public Long orderlistsUpdate(String[] orderNums)throws Exception{
-		List<OrderlistVO> list = new ArrayList<OrderlistVO>();
-		for(String temp : orderNums) {
-			OrderlistVO orderlistVO = new OrderlistVO();
-			orderlistVO.setOrderNum(temp);
-			list.add(orderlistVO);
-		}
-		return orderService.orderlistsUpdate(list);
-	}
-	
-	@ResponseBody
-	@GetMapping("selectedOrder")
-	public String selectedOrder(OrderlistVO orderlistVO)throws Exception{
-		Gson gson = new Gson();
-		return gson.toJson(orderService.selectedOrder(orderlistVO));
-	}
-	
-	@ResponseBody
-	@GetMapping("orderStateChange")
-	public String[] orderStateChange(OrderlistVO orderlistVO)throws Exception{
-		List<OrderlistVO> list = orderService.orderStateChange(orderlistVO);
-		Gson gson = new Gson();
-		int size = list.size();
-		String[] result = new String[size];
-		for(int i = 0 ; i < size; i++) {
-			result[i]=gson.toJson(list.get(i));
-		}
-		return result;
 	}
 	
 	//하루 일치의 판매량을 집계하여 보여주는 페이지

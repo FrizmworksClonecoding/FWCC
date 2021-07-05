@@ -61,7 +61,16 @@
 		select username from member where username = #{username}
 	</select>
 	
+	<select id="getMemberProfile" parameterType="MemberVO" resultType="MemberVO">
+		select * from member where username=#{username}
+	</select>
 	
+	<update id="setMemberUpdate" parameterType="MemberVO">
+		update member set password=#{password}, phone=#{phone}, email=#{email}, smsAgree=#{smsAgree}, emailAgree=#{emailAgree}
+		where username=#{username}
+	</update>
+	
+	<!-- forOrder -->
 	<select id="getUsernameandemail" parameterType="MemberVO" resultMap="getMemberMile">
 		select m.username, m.email, mi.enabledMile 
 		from member m inner join mileage mi on m.username=mi.username
@@ -74,14 +83,5 @@
 			<result column="enabledMile" property="enabledMile"/>
 		</association>
 	</resultMap>
-	
-	<select id="getMemberProfile" parameterType="MemberVO" resultType="MemberVO">
-		select * from member where username=#{username}
-	</select>
-	
-	<update id="setMemberUpdate" parameterType="MemberVO">
-		update member set password=#{password}, phone=#{phone}, email=#{email}, smsAgree=#{smsAgree}, emailAgree=#{emailAgree}
-		where username=#{username}
-	</update>
 	
 </mapper>
