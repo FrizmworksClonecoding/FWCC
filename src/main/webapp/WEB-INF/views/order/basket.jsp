@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,33 +25,15 @@
 						<th>
 							<input class="checkbox" type="checkbox" id="allcheck"/>
 						</th>
-						<th class="thumbnail">
-							THUMB
-						</th>
-						<th>
-							PRODUCT
-						</th>
-						<th class="wid12">
-							PRICE
-						</th>
-						<th class="wid8">
-							QUANTITY
-						</th>
-						<th class="wid8">
-							MILEAGE
-						</th>
-						<th class="wid8">
-							DELIVERY
-						</th>
-						<th class="wid8">
-							CHARGE
-						</th>
-						<th class="wid14">
-							TOTAL
-						</th>
-						<th class="wid8">
-							SELECT
-						</th>
+						<th class="thumbnail">THUMB</th>
+						<th>PRODUCT</th>
+						<th class="wid12">PRICE</th>
+						<th class="wid8">QUANTITY</th>
+						<th class="wid8">MILEAGE</th>
+						<th class="wid8">DELIVERY</th>
+						<th class="wid8">CHARGE</th>
+						<th class="wid14">TOTAL</th>
+						<th class="wid8">SELECT</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,7 +45,8 @@
 										name="checklist">
 							</td>
 							<td style="padding: 1%;"> <!-- 섬네일 -->
-								<img alt="" src="${pageContext.request.contextPath}/resources/images/product/${item.productVO.productNum}/${item.productFileVO.fileName}"
+								<img alt="" src="${pageContext.request.contextPath}/resources/images/product/
+													${item.productVO.productNum}/${item.productFileVO.fileName}"
 									width="100px" height="100px">
 							</td>
 							<td style="text-align: left; padding:1% 3%;"><!-- 상품이름 --> <!-- 그 아래에는 내가 선택한 옵션도 적혀있게된다. -->
@@ -76,7 +58,9 @@
 								<span>[할인률 : <c:out value="${item.productVO.productDisRate}"></c:out>%]</span>
 							</td>
 							<td><!-- 선택 개수 -->
-								<input style="width:60%; border-radius: 0.4rem;" type="number" value='<c:out value="${item.productCount}"></c:out>' min="1" max='<c:out value="${item.productInfoVO.stock}"></c:out>'>
+								<input style="width:60%; border-radius: 0.4rem;" type="number" 
+										value='<c:out value="${item.productCount}"></c:out>' 
+										min="1" max='<c:out value="${item.productInfoVO.stock}"></c:out>'>
 								<input type="hidden" readonly="readonly"
 								data-productCount="${item.productCount}"
 								data-cartNum='<c:out value="${item.cartNum}"></c:out>'
@@ -95,7 +79,8 @@
 							</td>
 							<td><!-- 전체 총합 가격 -->
 								<c:if test="${item.productVO.productDisRate eq 0}">
-									<span><strong>KRW <c:out value="${item.productCount*item.productVO.productPrice}"></c:out></strong></span>
+									<span><strong>KRW 
+										<c:out value="${item.productCount*item.productVO.productPrice}"></c:out></strong></span>
 								</c:if>
 								<c:if test="${item.productVO.productDisRate ne 0}">
 									<del>KRW <c:out value="${item.productCount*item.productVO.productPrice}"></c:out></del><br>

@@ -102,7 +102,15 @@ $("#selectAddressDelete").click(function(event){
 			addrNums:addrNums
 		},
 		success:function(result){
-			if(result>0){
+			if(result != ""){
+				let parseJson = JSON.parse(result);
+				$("#recPeople").val(parseJson.recipient);
+				$("#recZipcode").val(parseJson.zipCode);
+				$("#recBasic").val(parseJson.basicAddr);
+				$("#recDetail").val(parseJson.detailAddr);
+				$("#reccall1").val(parseJson.addrPhone1);
+				$("#reccall2").val(parseJson.addrPhone2);
+				$("#reccall3").val(parseJson.addrPhone3);
 				$.get({
 					url:"/address/getAddressList",
 					success:function(result){

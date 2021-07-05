@@ -33,6 +33,14 @@ public class AddressService {
 		return addressMapper.checkCount(addressVO);
 	}
 	
+	public Long recentUseUpdate(AddressVO addressVO)throws Exception{
+		return addressMapper.recentUseUpdate(addressVO);
+	}
+	
+	public Long recentDeleteUpdate(AddressVO addressVO)throws Exception{
+		return addressMapper.recentDeleteUpdate(addressVO);
+	}
+	
 	public Long deleteSelect(List<AddressVO> addressVOs)throws Exception{
 		return addressMapper.deleteSelect(addressVOs);
 	}

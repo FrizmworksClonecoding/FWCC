@@ -47,6 +47,15 @@
   	</foreach>
   </delete>
   
+  <update id="recentUseUpdate" parameterType="AddressVO">
+  	update address set recentUse = case addrNum when #{addrNum} then 1 else 0 end
+  	where username=#{username}
+  </update>
+  
+  <update id="recentDeleteUpdate" parameterType="AddressVO">
+  	update address set recentUse = case addrNum when (select Max(addrNum) from address where username=#{username}) then 1 else 0 end
+  </update>
+  
   <!-- member -->
   <select id="getProfileAddress" parameterType="MemberVO" resultType="AddressVO">
   	select * from address where username=#{username} and orderAddr=0

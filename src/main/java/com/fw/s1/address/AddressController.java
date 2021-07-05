@@ -6,13 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fw.s1.member.MemberVO;
@@ -29,6 +26,7 @@ public class AddressController {
 	@GetMapping("getSelectOne")
 	public String getSelectOne(AddressVO addressVO, Authentication authentication)throws Exception{
 		addressVO.setUsername(((UserDetails)authentication.getPrincipal()).getUsername());
+		
 		addressVO = addressService.getSelectOne(addressVO);
 		
 		if(addressVO==null) {
@@ -37,12 +35,15 @@ public class AddressController {
 		addressVO.phoneSeperator();
 		Gson gson = new Gson();
 		
+		addressService.recentUseUpdate(addressVO);
+		
 		return gson.toJson(addressVO);
 	}
 	
 	@ResponseBody
 	@GetMapping("deleteSelect")
-	public Long deleteAddress(long[] addrNums, Authentication authentication)throws Exception{
+	@Transactional(rollbackFor = Exception.class)
+	public String deleteAddress(long[] addrNums, Authentication authentication)throws Exception{
 		List<AddressVO> addressVOs = new ArrayList<>();
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUsername(((UserDetails)authentication.getPrincipal()).getUsername());
@@ -53,8 +54,25 @@ public class AddressController {
 			addressVO.setUsername(memberVO.getUsername());
 			addressVOs.add(addressVO);
 		}
+		if(addressService.deleteSelect(addressVOs)==0) {
+			throw new Exception();
+		}
 		
-		return addressService.deleteSelect(addressVOs);
+		AddressVO addressVO = new AddressVO();
+		addressVO.setUsername(memberVO.getUsername());
+		
+		if(addressService.recentDeleteUpdate(addressVO) == 0) {
+			throw new Exception();
+		}
+		
+		Gson gson = new Gson();
+		addressVO = addressService.getSelectRecent(addressVO);
+		if(addressVO != null) {
+			addressVO.phoneSeperator();
+			return gson.toJson(addressVO);
+		}
+		
+		return "";
 	}
 	
 	@ResponseBody

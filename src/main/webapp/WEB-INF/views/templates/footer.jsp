@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="footer-upper">
 	<a href="#"><i class="fas fa-arrow-circle-up"></i></a>
@@ -54,7 +53,8 @@
 				<span>BUSINESS LICENSE : 285-88-01438</span> 
 				<span>
 					MAIL-ORDER LICENSE : 2020-안양동안-0068 
-					<a href="#none" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=2858801438', 'bizCommPop', 'width=750, height=950;');return false;">[사업자정보확인]</a>
+					<a href="#none" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=2858801438', 
+											'bizCommPop', 'width=750, height=950;');return false;">[사업자정보확인]</a>
 				</span> 
 				<span>PERSONAL INFO MANAGER : 안종혁 </span> 
 				<span>E-MAIL : company@garments.co.kr</span>
@@ -65,6 +65,4 @@
 			</p>
 		</div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/navbar.js">
-
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common/navbar.js"></script>

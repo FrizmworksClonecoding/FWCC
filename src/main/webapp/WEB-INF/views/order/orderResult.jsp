@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +11,6 @@
 <c:import url="${pageContext.request.contextPath}/WEB-INF/views/templates/navbar.jsp">
 	<c:param name="isCommon" value="true"></c:param>
 </c:import>
-
 <div style="margin:10% 10% 3% 10%;">
 	<div style="text-align: center; margin-top:15%;">
 			<strong style="font-size:1.8rem;">주문이 성공적으로 완료되었습니다.
@@ -58,7 +56,6 @@
 		<a href="${pageContext.request.contextPath}/">홈으로 이동하기</a>
 	</div>
 </div>
-
 <c:import url="${pageContext.request.contextPath}/WEB-INF/views/templates/footer.jsp"></c:import>
 </body>
 </html>
