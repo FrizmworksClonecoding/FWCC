@@ -145,6 +145,13 @@ $("#selectAddressDelete").click(function(event){
 					}
 				});
 			}else{
+				$("#recPeople").val('');
+				$("#recZipcode").val('');
+				$("#recBasic").val('');
+				$("#recDetail").val('');
+				$("#reccall1").val('');
+				$("#reccall2").val('');
+				$("#reccall3").val('');
 				swal({
 					icon:"error",
 					title:"삭제 실패",
@@ -153,13 +160,6 @@ $("#selectAddressDelete").click(function(event){
 			}
 		}
 	});
-	$("#recPeople").val('');
-	$("#recZipcode").val('');
-	$("#recBasic").val('');
-	$("#recDetail").val('');
-	$("#reccall1").val('');
-	$("#reccall2").val('');
-	$("#reccall3").val('');
 });
 
 $("#addressChapter1").on("click",".addressAdapt", function(){
