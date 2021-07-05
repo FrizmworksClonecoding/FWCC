@@ -248,6 +248,7 @@
 				</tr>
 			</tbody>
 		</table>
+		
 		<table style="width:100%;">
 			<tbody>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
@@ -283,6 +284,7 @@
 				</tr>
 			</tbody>
 		</table>
+		
 		<div style="text-align: right; margin-top: 4%;">
 			<strong>최종결제 금액</strong>
 			<p><strong><span style="font-size:1.8rem;" id="forUserPrice"><c:out value="${totalprice}"></c:out></span></strong></p>
@@ -346,24 +348,12 @@
 			<table style="width:100%; border: 1px black solid; margin-top: 2%; height:50%;">
 				<thead>
 					<tr>
-						<th>
-							<input type="checkbox" id="addressAllCheck">
-						</th>
-						<th>
-							배송지명
-						</th>
-						<th>
-							수령인
-						</th>
-						<th>
-							전화번호
-						</th>
-						<th>
-							주소
-						</th>
-						<th>
-							배송지 관리
-						</th>
+						<th><input type="checkbox" id="addressAllCheck"></th>
+						<th>배송지명</th>
+						<th>수령인</th>
+						<th>전화번호</th>
+						<th>주소</th>
+						<th>배송지 관리	</th>
 					</tr>
 				</thead>
 				<tbody id="settingAddressList">
@@ -379,23 +369,12 @@
 							<td>
 								<input type="checkbox" class="addressSelect" data-addrNum='<c:out value="${item.addrNum}"></c:out>'>
 							</td>
-							<td>
-								<c:out value="${item.addrName}"></c:out>
-							</td>
-							<td>
-								<c:out value="${item.recipient}"></c:out>
-							</td>
-							<td>
-								<c:out value="${item.addrPhone}"></c:out>
-							</td>
-							<td>
-								<c:out value="${item.fullAddress}"></c:out>
-							</td>
-							<td>
-								<button class="addressAdapt"
-										data-addrNum='<c:out value="${item.addrNum}"></c:out>'>적용</button>
-								<br><button class="addressRepareForm"
-										data-addrNum='<c:out value="${item.addrNum}"></c:out>'>수정</button>
+							<td><c:out value="${item.addrName}"></c:out></td>
+							<td><c:out value="${item.recipient}"></c:out></td>
+							<td><c:out value="${item.addrPhone}"></c:out></td>
+							<td><c:out value="${item.fullAddress}"></c:out></td>
+							<td><button class="addressAdapt" data-addrNum='<c:out value="${item.addrNum}"></c:out>'>적용</button>
+								<br><button class="addressRepareForm" data-addrNum='<c:out value="${item.addrNum}"></c:out>'>수정</button>
 							</td>		
 						</tr>
 					</c:forEach>
