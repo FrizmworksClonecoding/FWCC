@@ -60,7 +60,8 @@
 						data-cartNum='<c:out value="${item.cartNum}"></c:out>'
 						style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
 						<td style="padding:1%;">
-							<img alt="" src="${pageContext.request.contextPath}/resources/images/product/${item.productVO.productNum}/${item.productFileVO.fileName}"
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/product/
+															${item.productVO.productNum}/${item.productFileVO.fileName}"
 								width="100px" height="100px">
 						</td>
 						<td style="text-align: left; padding:1% 3%;">
@@ -119,16 +120,19 @@
 				</tr>
 			</tfoot>
 		</table>
+		
 		<table style="width:100%;margin-top:7%;">
 			<thead>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
 					<th style="text-align: left; width:16%;">주문 정보</th>
-					<th style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""> 필수입력사항</th>
+					<th style="text-align: right;">
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""> 필수입력사항</th>
 				</tr>
 			</thead>
 			<tbody style="text-align: left;">
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
-					<td style="padding:1%;">주문하시는 분 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
+					<td style="padding:1%;">주문하시는 분 
+						<img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
 					<td style="padding:1%;">
 						<input type="text" id="buyerName" value='<c:out value="${orderAddr.recipient}"></c:out>' readonly="readonly">
 					</td>
@@ -136,9 +140,13 @@
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
 					<td style="padding:1%;">주소 <img src="//img.echosting.cafe24.com/skin/base_ko_KR/order/ico_required.gif" alt=""></td>
 					<td style="padding:1%;">
-						<input type="text" style="width:8%;" id="buyerZipcode" value='<c:out value="${orderAddr.zipCode}"></c:out>' readonly="readonly"><br>
-						<input type="text" style="margin-top:0.5%;" id="buyerBasic" value='<c:out value="${orderAddr.basicAddr}"></c:out>' readonly="readonly"> <span>기본주소</span><br>
-						<input type="text" style="margin-top:0.5%;" id="buyerDetail" value='<c:out value="${orderAddr.detailAddr}"></c:out>' readonly="readonly"> <span>나머지주소</span>
+						<input type="text" style="width:8%;" id="buyerZipcode" value='<c:out value="${orderAddr.zipCode}"></c:out>' 
+																												readonly="readonly"><br>
+						<input type="text" style="margin-top:0.5%;" id="buyerBasic" value='<c:out value="${orderAddr.basicAddr}"></c:out>' 
+																							readonly="readonly"> <span>기본주소</span><br>
+						<input type="text" style="margin-top:0.5%;" id="buyerDetail" 
+											value='<c:out value="${orderAddr.detailAddr}"></c:out>' readonly="readonly"> 
+											<span>나머지주소</span>
 					</td>
 				</tr>
 				<tr style="border-bottom: 1px rgba(128,128,128,0.5) solid;">
