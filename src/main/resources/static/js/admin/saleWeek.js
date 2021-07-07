@@ -21,7 +21,7 @@ function getData(){
 	
 	const date = $("#getDate").val();
 	let first = new Date(date);
-	first.setDate(first.getDate()-7);
+	first.setDate(first.getDate()-6);
 	let count = 0;
 	const arr2 = new Map();
 	while(count<7){
