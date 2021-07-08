@@ -7,10 +7,22 @@
 <meta charset="UTF-8">
 <c:import url="/WEB-INF/views/templates/head.jsp"></c:import>
 <style type="text/css">
-a { color: #000; }
-a:link { color: #000; }
-a:visited { color: #000; }
-a:hover{text-decoration: none;}
+a {
+	color: #000;
+}
+
+a:link {
+	color: #000;
+}
+
+a:visited {
+	color: #000;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 .selBtn {
 	padding-left: 50px;
 	padding-right: 50px;
@@ -33,21 +45,20 @@ a:hover{text-decoration: none;}
 	min-height: 480px;
 }
 
-.divTest {
+.divMain {
 	border-width: 0px;
 	min-height: 480px;
-	width:100%;
-	padding:0px;
+	width: 100%;
+	padding: 0px;
 }
 
-
 .cardList {
-vertical-align: top;
-	display:inline-block;
+	vertical-align: top;
+	display: inline-block;
 	width: 25%;
-	padding:0px;
+	padding: 0px;
 	margin: 0 -2px 40px;
-	border:0px;
+	border: 0px;
 }
 
 #thumb {
@@ -60,6 +71,8 @@ vertical-align: top;
 	height: auto;
 	box-sizing: border-box;
 }
+
+
 
 .function {
 	line-height: 38px;
@@ -74,7 +87,7 @@ vertical-align: top;
 
 .sort {
 	float: right;
-	margin-right:10px;
+	margin-right: 10px;
 }
 
 .sortName {
@@ -85,11 +98,13 @@ vertical-align: top;
 .sortDiv {
 	height: 40px;
 }
-#cardContents{
-margin:0 10px;
+
+#cardContents {
+	margin: 0 10px;
 }
-.page{
-clear:both;
+
+.page {
+	clear: both;
 }
 </style>
 <c:if test="${division eq ''}">
@@ -107,9 +122,11 @@ clear:both;
 
 	<div class="contents">
 		<div id="wrap">
+		
 			<c:if test="${division ne ''}">
 				<h1 style="text-align: center;">${name}(${division})</h1>
 			</c:if>
+			
 			<c:if test="${division eq ''}">
 				<h1 style="text-align: center;">${name}</h1>
 			</c:if>
@@ -128,85 +145,93 @@ clear:both;
 					Total <strong>${totalCount}</strong> items.
 				</p>
 				<div class="sort">
-					<span><a class="sortName" href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=new&sale=${sale}">신상품</a></span>
-					<span class="sortName"> | </span>
-					<span><a class="sortName" href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=name&sale=${sale}">상품명</a></span>
-					<span class="sortName"> | </span>
-					<span><a class="sortName" href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=lowPrice&sale=${sale}">낮은가격</a></span>
-					<span class="sortName"> | </span>
-					<span><a class="sortName" href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=highPrice&sale=${sale}">높은가격</a></span>
+					<span><a class="sortName"
+						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=new&sale=${sale}">신상품</a></span>
+					<span class="sortName"> | </span> <span><a class="sortName"
+						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=name&sale=${sale}">상품명</a></span>
+					<span class="sortName"> | </span> <span><a class="sortName"
+						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=lowPrice&sale=${sale}">낮은가격</a></span>
+					<span class="sortName"> | </span> <span><a class="sortName"
+						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&sortStandard=highPrice&sale=${sale}">높은가격</a></span>
 				</div>
 			</div>
 
 
 
-			<div class="divTest">
-				<!-- 
-					<ul class="ulTest" >
-					 -->
+			<div class="divMain">
+				
 				<c:forEach items="${productList}" var="product">
 					<div class="cardList">
 						<div id="thumb">
-							<a href="${pageContext.request.contextPath }/product/select?productNum=${product.productNum}">
-							<c:if test="${!empty product.file.fileName }">
-							<img id="cardImg" alt="${product.file.oriName}" src="/resources/images/product/${product.productNum}/${product.file.fileName}">
-							</c:if>
-							<c:if test="${empty product.file.fileName}">
-							<img id="cardImg" alt="not" src="${pageContext.request.contextPath}/images/product/test/frizm_278.jpg">
-							</c:if>
+							<a
+								href="${pageContext.request.contextPath }/product/select?productNum=${product.productNum}">
+								<c:if test="${!empty product.file.fileName }">
+									<img id="cardImg" alt="${product.file.oriName}"
+										src="/resources/images/product/${product.productNum}/${product.file.fileName}">
+								</c:if> <c:if test="${empty product.file.fileName}">
+									<img id="cardImg" alt="not"
+										src="${pageContext.request.contextPath}/images/product/test/frizm_278.jpg">
+								</c:if>
 							</a>
 						</div>
 						<div id="cardContents">
-						<span ><a href="${pageContext.request.contextPath }/product/select?productNum=${product.productNum}" style="font-size: 11px; color: #838383;">${product.productTitle}</a></span>
-						<br>
-						<c:if test="${product.productDisRate eq 0}">
-							<span style=" font-size: 12px; color: #000000;">KRW ${product.productPrice}</span>
-							
-								
-						</c:if> <c:if test="${product.productDisRate ne 0}">
-							<span
-								style="font-size: 12px; color: #000000; text-decoration: line-through;">KRW ${product.productPrice}
-							</span>
+							<span><a
+								href="${pageContext.request.contextPath }/product/select?productNum=${product.productNum}"
+								style="font-size: 11px; color: #838383;">${product.productTitle}</a></span>
 							<br>
-							<span style="font-size: 12px; color: #555555;">할인 금액 :
-								${product.finalPrice}</span>
-							<span style="font-size: 12px; color: #ff0000;">
-								${product.productDisRate}% SALE</span>
-						</c:if>
+							<c:if test="${product.productDisRate eq 0}">
+								<span style="font-size: 12px; color: #000000;">KRW
+									${product.productPrice}</span>
+
+
+							</c:if>
+							<c:if test="${product.productDisRate ne 0}">
+								<span
+									style="font-size: 12px; color: #000000; text-decoration: line-through;">KRW
+									${product.productPrice} </span>
+								<br>
+								<span style="font-size: 12px; color: #555555;">할인 금액 :
+									${product.finalPrice}</span>
+								<span style="font-size: 12px; color: #ff0000;">
+									${product.productDisRate}% SALE</span>
+							</c:if>
 						</div>
 					</div>
 				</c:forEach>
-				<!-- 
-					</ul>
- -->
+
 			</div>
+			
+			
+			
 			<div class="page">
-			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link p"
-					href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=1&sortStandard=${sortStandard}&sale=${sale}"
-					title="${pager.startNum-1}"><</a></li>
+				<ul class="pagination justify-content-center">
+					<li class="page-item"><a class="page-link p"
+						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=1&sortStandard=${sortStandard}&sale=${sale}"
+						title="${pager.startNum-1}"><</a></li>
 
-				<li class="page-item"><a class="page-link p"
-					href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.startNum-1}&sortStandard=${sortStandard}&sale=${sale}">PREV</a></li>
+					<li class="page-item"><a class="page-link p"
+						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.startNum-1}&sortStandard=${sortStandard}&sale=${sale}">PREV</a></li>
 
-				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p"
-						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${i}&sortStandard=${sortStandard}&sale=${sale}">${i}</a></li>
-				</c:forEach>
-				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p"
-						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.lastNum+1}&sortStandard=${sortStandard}&sale=${sale}">NEXT</a></li>
-					<li class="page-item"><a class="page-link p"
-						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.totalPage}&sortStandard=${sortStandard}&sale=${sale}">></a></li>
-				</c:if>
-				<c:if test="${!pager.next}">
-					<li class="page-item"><a class="page-link p"
-						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.lastNum}&sortStandard=${sortStandard}&sale=${sale}">NEXT</a></li>
-					<li class="page-item"><a class="page-link p"
-						href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.totalPage}&sortStandard=${sortStandard}&sale=${sale}">></a></li>
-				</c:if>
-			</ul>
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+						<li class="page-item"><a class="page-link p"
+							href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${i}&sortStandard=${sortStandard}&sale=${sale}">${i}</a></li>
+					</c:forEach>
+					<c:if test="${pager.next}">
+						<li class="page-item"><a class="page-link p"
+							href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.lastNum+1}&sortStandard=${sortStandard}&sale=${sale}">NEXT</a></li>
+						<li class="page-item"><a class="page-link p"
+							href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.totalPage}&sortStandard=${sortStandard}&sale=${sale}">></a></li>
+					</c:if>
+					<c:if test="${!pager.next}">
+						<li class="page-item"><a class="page-link p"
+							href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.lastNum}&sortStandard=${sortStandard}&sale=${sale}">NEXT</a></li>
+						<li class="page-item"><a class="page-link p"
+							href="${pageContext.request.contextPath }/product/list?collab=${collab}&productType=${name}-${division}&name=${name}&division=${division}&curPage=${pager.totalPage}&sortStandard=${sortStandard}&sale=${sale}">></a></li>
+					</c:if>
+				</ul>
 			</div>
+			
+			
 		</div>
 	</div>
 	<c:import url="/WEB-INF/views/templates/footer.jsp"></c:import>

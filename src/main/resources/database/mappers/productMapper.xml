@@ -8,21 +8,19 @@
 	<!-- +++++++++++++++++++++++++CW START+++++++++++++++++++++++++++++++++++ -->
 
 	<!-- ++++++++++ R ++++++++++ -->
+
 	<select id="getTotalCount" parameterType="ProductPager"
 		resultType="java.lang.Long">
 		select count(productNum) from product
 		where
-
-		<!-- and collab like concat('%',#{collab},'%') and productType like concat('%',#{productType},'%') -->
-		<!-- <choose> <when test="productType=='top'"> productDivNum in (select 
-			productDivNum from productDivision where productType like '%top%') and </when> 
-			<when test="productType=='bottom'"> productDivNum in (select productDivNum 
-			from productDivision where productType like concat('%','bottom','%')) and 
-			</when> <otherwise> </otherwise> </choose> -->
-		productDivNum in (select productDivNum from productDivision where
-		productType like concat('%',#{productType},'%'))
+		productDivNum in (select
+		productDivNum from productDivision where
+		productType like
+		concat('%',#{productType},'%'))
 		and
-		productDivNum in (select productDivNum from productDivision where collab like concat('%',#{collab},'%'))
+		productDivNum in (select
+		productDivNum from productDivision where collab like
+		concat('%',#{collab},'%'))
 		and
 		productSaleable = 1
 		<if test="sale">
@@ -30,7 +28,8 @@
 		</if>
 	</select>
 
-	<select id="getList" parameterType="ProductPager" resultMap="productList">
+	<select id="getList" parameterType="ProductPager"
+		resultMap="productList">
 		select * from
 		(select row_number() over(
 		order by
@@ -52,9 +51,12 @@
 		) as R, P.*,PF.fileName,PF.oriName from
 		(select * from product
 		where
-		productDivNum in (select productDivNum from productDivision where productType like concat('%',#{productType},'%'))
+		productDivNum in (select productDivNum from productDivision where
+		productType like concat('%',#{productType},'%'))
 		and
-		productDivNum in (select productDivNum from productDivision where collab like concat('%',#{collab},'%'))
+		productDivNum in
+		(select productDivNum from productDivision where collab like
+		concat('%',#{collab},'%'))
 		and
 		productSaleable = 1
 		<if test="sale">
@@ -62,29 +64,31 @@
 		</if>
 		) as P
 		left join
-		(select * from productFiles where fileName like "M\_%") as PF
+		(select * from productFiles where fileName like "M\_%")
+		as PF
 		on P.productNum = PF.productNum
 		) as RP
-		where R between #{startRow} and #{lastRow}
+		where R between #{startRow}
+		and #{lastRow}
 	</select>
 
-<resultMap type="ProductVO" id="productList">
-<id column="productNum" property="productNum"/>
-<result column="productTitle" property="productTitle"/>
-<result column="productPrice" property="productPrice"/>
-<result column="productDisRate" property="productDisRate"/>
-<result column="summary" property="summary"/>
-<result column="productContents" property="productContents"/>
-<result column="productDivNum" property="productDivNum"/>
-<result column="finalPrice" property="finalPrice"/>
-<result column="productMileage" property="productMileage"/>
-<result column="productSaleable" property="productSaleable"/>
-<association property="file" javaType="ProductFileVO">
-	<id column="fileNum" property="fileNum"/>
-	<result column="fileName" property="fileName"/>
-	<result column="oriName" property="oriName"/>
-</association>
-</resultMap>
+	<resultMap type="ProductVO" id="productList">
+		<id column="productNum" property="productNum" />
+		<result column="productTitle" property="productTitle" />
+		<result column="productPrice" property="productPrice" />
+		<result column="productDisRate" property="productDisRate" />
+		<result column="summary" property="summary" />
+		<result column="productContents" property="productContents" />
+		<result column="productDivNum" property="productDivNum" />
+		<result column="finalPrice" property="finalPrice" />
+		<result column="productMileage" property="productMileage" />
+		<result column="productSaleable" property="productSaleable" />
+		<association property="file" javaType="ProductFileVO">
+			<id column="fileNum" property="fileNum" />
+			<result column="fileName" property="fileName" />
+			<result column="oriName" property="oriName" />
+		</association>
+	</resultMap>
 
 	<select id="getNextNum" resultType="java.lang.Long">
 		select max(productNum)+1 from
@@ -95,52 +99,57 @@
 		resultType="ProductFileVO">
 		select * from productFiles where fileNum=#{fileNum}
 	</select>
-	<select id="getThumbNail" parameterType="ProductFileVO" resultType="ProductFileVO">
-		select * from productFiles where productNum = #{productNum} and fileName like 'T\_%'
+	<select id="getThumbNail" parameterType="ProductFileVO"
+		resultType="ProductFileVO">
+		select * from productFiles where productNum = #{productNum}
+		and fileName like 'T\_%'
 	</select>
-	<select id="getMain" parameterType="ProductFileVO" resultType="ProductFileVO">
-		select * from productFiles where productNum = #{productNum} and fileName like 'M\_%'
+	<select id="getMain" parameterType="ProductFileVO"
+		resultType="ProductFileVO">
+		select * from productFiles where productNum = #{productNum}
+		and fileName like 'M\_%'
 	</select>
 	<select id="getAllList" resultType="ProductVO">
-		select * from product order by productNum desc
+		select * from product order
+		by productNum desc
 	</select>
-	
-	<select id="getProductSelect" parameterType="ProductVO" resultType="ProductVO">
+
+	<select id="getProductSelect" parameterType="ProductVO"
+		resultType="ProductVO">
 		select * from product where productNum = #{productNum}
 	</select>
-	<select id="getInfoSelect" parameterType="ProductVO" resultType="ProductInfoVO">
+	
+	
+	<select id="getInfoSelect" parameterType="ProductVO"
+		resultType="ProductInfoVO">
 		select * from productInfo where productNum = #{productNum}
 	</select>
-	<select id="getFileSelect" parameterType="ProductVO" resultType="ProductFileVO">
+	<select id="getFileSelect" parameterType="ProductVO"
+		resultType="ProductFileVO">
 		select * from productFiles where productNum = #{productNum}
 	</select>
-	<select id="getDivisionSelect" parameterType="ProductVO" resultType="ProductDivisionVO">
-		select * from productDivision where productDivNum = #{productDivNum}
+	<select id="getDivisionSelect" parameterType="ProductVO"
+		resultType="ProductDivisionVO">
+		select * from productDivision where productDivNum =
+		#{productDivNum}
 	</select>
 	<select id="getDivisions" resultType="java.lang.String">
-		select distinct collab from productDivision;
+		select distinct collab from
+		productDivision;
 	</select>
-	<select id="getDivision" parameterType="productDivisionVO" resultType="productDivisionVO">
+	<select id="getDivision" parameterType="productDivisionVO"
+		resultType="productDivisionVO">
 		select * from productDivision where collab=#{collab}
 	</select>
-	
-	<!-- 
-	<select id="getTempList" parameterType="ProductPager" resultType="ProductVO">
-		select * from product
-		where productNum between #{startRow} and #{lastRow}
-	</select>
-	<select id="getTempInfoList" parameterType="ProductPager" resultType="ProductInfoVO">
-		select * from productInfo
-		where productNum between #{startRow} and #{lastRow}
-	</select>
-	<select id="getDivList" resultType="ProductDivisionVO">
-		select * from productDivision;
-	</select>
-	<select id="getFileList" parameterType="ProductPager" resultType="ProductFileVO">
-	select * from productFiles where productNum between #{startRow} and #{lastRow}
-	</select>
-	
-	 -->
+
+	<!-- <select id="getTempList" parameterType="ProductPager" resultType="ProductVO"> 
+		select * from product where productNum between #{startRow} and #{lastRow} 
+		</select> <select id="getTempInfoList" parameterType="ProductPager" resultType="ProductInfoVO"> 
+		select * from productInfo where productNum between #{startRow} and #{lastRow} 
+		</select> <select id="getDivList" resultType="ProductDivisionVO"> select 
+		* from productDivision; </select> <select id="getFileList" parameterType="ProductPager" 
+		resultType="ProductFileVO"> select * from productFiles where productNum between 
+		#{startRow} and #{lastRow} </select> -->
 
 	<!-- ++++++++++ C ++++++++++ -->
 
@@ -148,7 +157,9 @@
 		insert into product
 		(productTitle,summary,productPrice,productContents,finalPrice,productMileage,productSaleable,productDivNum)
 		values
-		(#{productTitle},#{summary},#{productPrice},#{productContents},#{finalPrice},#{productMileage},#{productSaleable},(select productDivNum from productDivision where collab=#{collab} and productType=#{productType}))
+		(#{productTitle},#{summary},#{productPrice},#{productContents},#{finalPrice},#{productMileage},#{productSaleable},(select
+		productDivNum from productDivision where collab=#{collab} and
+		productType=#{productType}))
 	</insert>
 
 
@@ -163,7 +174,7 @@
 		productFiles (productNum,fileName,oriName)
 		values(#{productNum},#{fileName},#{oriName})
 	</insert>
-	
+
 	<insert id="setInsertDivision" parameterType="ProductDivisionVO">
 		insert into
 		productDivision (collab,producttype)
@@ -181,18 +192,21 @@
 		finalPrice=#{finalPrice},
 		productMileage=#{productMileage},
 		productSaleable=#{productSaleable},
-		productDivNum=(select productDivNum from productDivision where collab=#{collab} and productType=#{productType})
+		productDivNum=(select productDivNum from productDivision where
+		collab=#{collab} and productType=#{productType})
 		where
 		productNum=#{productNum}
 	</update>
-	
+
 	<update id="setUpdateProductInfo" parameterType="ProductInfoVO">
-		update productInfo set
+		update
+		productInfo set
 		stock = #{stock}
 		where
 		productNum = #{productNum}
 		and
-		size = #{size}
+		size
+		= #{size}
 	</update>
 
 
@@ -203,7 +217,8 @@
 		productNum=#{productNum}
 	</delete>
 	<delete id="setFileDelete" parameterType="ProductVO">
-		delete from productFiles
+		delete from
+		productFiles
 		where productNum =#{productNum}
 	</delete>
 
