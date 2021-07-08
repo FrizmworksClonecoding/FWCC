@@ -227,7 +227,6 @@ public class MemberService implements UserDetailsService {
 		try {
 			memberVO = memberMapper.getLogin(memberVO);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return memberVO;

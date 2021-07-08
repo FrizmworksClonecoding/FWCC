@@ -59,9 +59,6 @@ public class MemberController {
 		// 1. session의 속성명들 꺼내오기
 		Enumeration<String> enumeration = session.getAttributeNames();
 		
-//		mv.addObject("msg", "로그인 성공");
-//		mv.addObject("path", "/");
-//		mv.setViewName("common/commonResult");
 		mv.setViewName("index");
 		return mv;
 	}
