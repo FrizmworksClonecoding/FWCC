@@ -1,82 +1,47 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-%>
-<%@ taglib
-	prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"
-%>
-<%@ taglib
-	prefix="form"
-	uri="http://www.springframework.org/tags/form"
-%>
-<!DOCTYPE html>
-<html>
-<head>
-<c:import url="/WEB-INF/views/templates/head.jsp"></c:import>
-<link
-	rel="stylesheet"
-	href="/css/member/memberLogin.css"
->
-<link
-	rel="stylesheet"
-	href="/css/common/common.css"
->
-<meta charset="UTF-8">
-<title>FWCC-memberLogin</title>
-</head>
-<body>
-	<!-- header START -->
-	<c:import url="/WEB-INF/views/templates/navbar.jsp">
-		<c:param name="isCommon" value="true"></c:param>
-	</c:import>
-	<!-- header END -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+			<!DOCTYPE html>
+			<html>
 
-	<!-- contents START -->
-	<div class="container">
-		<div id="contents">
-			<div class="titleArea">
-				<h2>MEMBER LOGIN</h2>
-			</div>
-			<form
-				id="member_form_3213019162"
-				name=""
-				action="./memberLogin"
-				method="POST"
-			>
-				<div class="xans-element- xans-member xans-member-login ">
-					<div class="login">
-						<fieldset>
-							<legend>회원로그인</legend>
-							<label
-								class="id ePlaceholder"
-								title="ID"
-							><input
-								id="member_id"
-								name="username"
-								class="inputTypeText"
-								placeholder="ID"
-								value=""
-								type="text"
-							/></label> <label
-								class="password ePlaceholder"
-								title="PASSWORD"
-							><input
-								id="member_passwd"
-								name="password"
-								autocomplete="off"
-								value=""
-								type="password"
-								placeholder="PASSWORD"
-							/></label>
-							<button class="btnLogin">LOGIN</button>
-							<ul>
-								<li><a href="./finder/idFind">아이디찾기</a></li>
-								<li>/</li>
-								<li><a href="./finder/pwFind">비밀번호찾기</a></li>
-							</ul>
-							<!-- <ul class="snsArea">
+			<head>
+				<c:import url="/WEB-INF/views/templates/head.jsp"></c:import>
+				<link rel="stylesheet" href="/css/member/memberLogin.css">
+				<link rel="stylesheet" href="/css/common/common.css">
+				<meta charset="UTF-8">
+				<title>FWCC-memberLogin</title>
+			</head>
+
+			<body>
+				<!-- header START -->
+				<c:import url="/WEB-INF/views/templates/navbar.jsp">
+					<c:param name="isCommon" value="true"></c:param>
+				</c:import>
+				<!-- header END -->
+
+				<!-- contents START -->
+				<div class="container">
+					<div id="contents">
+						<div class="titleArea">
+							<h2>MEMBER LOGIN</h2>
+						</div>
+						<form id="member_form_3213019162" name="" action="./memberLogin" method="POST">
+							<div class="xans-element- xans-member xans-member-login ">
+								<div class="login">
+									<fieldset>
+										<legend>회원로그인</legend>
+										<label class="id ePlaceholder" title="ID"><input id="member_id" name="username"
+												class="inputTypeText" placeholder="ID" value="" type="text" /></label>
+										<label class="password ePlaceholder" title="PASSWORD"><input id="member_passwd"
+												name="password" autocomplete="off" value="" type="password"
+												placeholder="PASSWORD" /></label>
+										<button class="btnLogin">LOGIN</button>
+										<ul>
+											<li><a href="./finder/idFind">아이디찾기</a></li>
+											<li>/</li>
+											<li><a href="./finder/pwFind">비밀번호찾기</a></li>
+										</ul>
+										<!-- <ul class="snsArea">
 								<li class=""><a
 									href="#none"
 									onclick=""
@@ -106,27 +71,26 @@
 										alt="카카오계정 로그인"
 									/></a></li>
 							</ul> -->
-							<p class="link">
-								회원가입을 하시면 다양하고 특별한<br />혜택이 준비되어 있습니다. <a
-									href="./memberJoin"
-									class="black"
-								>JOIN US</a>
-							</p>
-						</fieldset>
+										<p class="link">
+											회원가입을 하시면 다양하고 특별한<br />혜택이 준비되어 있습니다. <a href="./memberJoin"
+												class="black">JOIN US</a>
+										</p>
+									</fieldset>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
-			</form>
-		</div>
-	</div>
-	<!-- contents END -->
+				<!-- contents END -->
 
-	<!-- footer START -->
-	<c:import url="/WEB-INF/views/templates/footer.jsp"></c:import>
-	<!-- footer END -->
+				<!-- footer START -->
+				<c:import url="/WEB-INF/views/templates/footer.jsp"></c:import>
+				<!-- footer END -->
 
-	<!-- External JS -->
+				<!-- External JS -->
 
-	<!-- Custom JS -->
+				<!-- Custom JS -->
 
-</body>
-</html>
+			</body>
+
+			</html>

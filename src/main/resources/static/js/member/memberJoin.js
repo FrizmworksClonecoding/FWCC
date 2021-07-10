@@ -99,9 +99,6 @@ $(".eraser").each(function(){
 	});
 });
 
-
-
-
 // MemberVO init =======================================
 let username = "";
 let password = "";
@@ -121,7 +118,6 @@ let birth_day = "";
 let birth = "";
 let smsAgree = "";
 let emailAgree = "";
-
 
 // ID 중복 체크 ===========================================================
 $("#usernameCheck").click(function(){

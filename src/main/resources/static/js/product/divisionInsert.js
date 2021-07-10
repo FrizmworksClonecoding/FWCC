@@ -1,11 +1,12 @@
 /**
  * 
  */
+
+
 let dCheck = false;
 let str="";
 
-
-function duplCheck(sibal){
+function duplCheck(data){
 	let collab=$("#collab").val();
 	dCheck=false;
 	if(collab.length>0){
@@ -29,14 +30,10 @@ function duplCheck(sibal){
 }
 
 $("#duplCheck").click(function(){
-	
 	duplCheck(false);
 })
 
 $("#addBtn").click(function(){
 	duplCheck(true);
-	
-	
-	
 })
 
